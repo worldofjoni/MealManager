@@ -20,4 +20,4 @@
   </head>
   <body class="d-flex flex-column vh-100">
 
-    <?php include("../templates/navbar.php"); ?>
+  <?php include("../templates/navbar.php"); ?>

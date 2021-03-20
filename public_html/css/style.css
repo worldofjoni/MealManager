@@ -1,12 +1,9 @@
 
 
-
+/* 
 .preview-img {
-    background: url("../img/burger.jpg");
+    background: url('img/burger.jpg');
     background-size: cover;
     background-position: center;
 }
-
-.served {
-    height-min: 2rem;
-}
+ */
