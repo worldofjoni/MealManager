@@ -1,29 +1,53 @@
-<?php include("../config/config.php"); ?>
+<?php include("../templates/header.php"); ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <title><?php echo $CONFIG['pagename']; ?></title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<main class="flex-grow-1">
+    <div class="container py-5 px-2" style="max-width: 50em;">
+        <h1>Meals</h1>
+        <form class="form row">
+            <div class="form-group mb-2 pl-0 col">
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" id="search" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-secondary mb-2 me-3 col-auto"><i class="fas fa-search"></i></button>
+        </form>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
-  </head>
-  <body>
+        <div class="my-3">
+            <div class="card bg-light mb-3">
+                <div class="row g-0">
+                    <div class="col-4 preview-img rounded-start">
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Hamburger
+                                    <div class="float-end text-warning"><i class="far fa-star"></i><i class="far fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </h5>
+                                <h6 class="mb-0">Main Ingredients:</h6>
+                                <p class="card-text ">Beef, Chease, Buns</p>
+                                
+                                    <a class="btn btn-primary" href="#" role="button"><i class="fas fa-external-link-alt"></i></a>
+                                    <a class="btn btn-secondary" href="#" role="button"><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-danger" href="#" role="button"><i class="fas fa-times"></i></a>
+                                
+                                    <p class="card-text float-end align-text-bottom mt-3"><small class="text-muted">Last Served: 0 days ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 
-      
-    <h1>Welcome!</h1>
-
-    
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
-  </body>
-</html>
+
+
+
+
+</main>
+
+
+
+<?php include("../templates/footer.php"); ?>
