@@ -35,4 +35,13 @@ body{
     padding: unset;
     vertical-align: unset;
 }
- 
+
+.background-img {
+    
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.3), 
+        rgba(127, 127, 127, 0.3)
+      ),url('../img/burger.jpg'); 
+    background-size: cover; 
+    background-position: center;
+}
