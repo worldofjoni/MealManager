@@ -45,3 +45,7 @@ body{
     background-size: cover; 
     background-position: center;
 }
+
+.no-x-scroll{
+    overflow-x: hidden;
+}

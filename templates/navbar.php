@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-2 sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><i class="fas fa-hamburger"></i> MealManger</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-sm-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Meals <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="meal-list.php">Meals <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Planer</a>
