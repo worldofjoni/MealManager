@@ -7,3 +7,32 @@
     background-position: center;
 }
  */
+
+
+body{
+    overflow-x: hidden;
+}
+
+.no-markup,
+.no-markup:visited,
+.no-markup:hover,
+.no-markup:active,
+.no-markup:focus,
+.no-markup:active:hover {
+    font-style: unset;
+    color: unset;
+    background-color: unset;
+    font-size: unset;
+    text-decoration: unset;
+    font-variant: unset;
+    font-weight: unset;
+    line-height: unset;
+    font-family: unset;
+    border-radius: unset;
+    border: unset;
+    outline: unset;
+    box-shadow: unset;
+    padding: unset;
+    vertical-align: unset;
+}
+ 
