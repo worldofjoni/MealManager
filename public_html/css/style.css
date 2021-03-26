@@ -54,3 +54,8 @@ body {
     transition: .2s;
     transition-timing-function: ease;
 }
+
+#picturePlaceholder {
+    background-size: cover !important;
+    background-position: center !important;
+}

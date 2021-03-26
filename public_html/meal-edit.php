@@ -34,8 +34,8 @@
                     <label for="recipePic" class="form-label">Picture</label>
                     <input class="form-control" type="file" accept="image/*" id="recipePic">
                 </div>
-                <!-- <div class="placeholder ratio ratio-21x9 bg-dark mb-3">
-                </div> -->
+                <div class="ratio ratio-21x9 mb-3 visually-hidden rounded" id="picturePlaceholder">
+                </div>
                 
 
                 <button type="submit" value="submit" class="btn btn-primary">Save</button>

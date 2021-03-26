@@ -33,10 +33,6 @@ $(document).ready(function() {
     };
 
 
-
-
-
-
     $(".star-select").hover(function() {
 
             setHtmlTo(getId(this));
@@ -52,6 +48,25 @@ $(document).ready(function() {
         $("#stars").val(set);
         setEffect("rotate(.2turn)", set);
         setTimeout(setEffect, 250, "rotate(0)", set);
+
+    });
+
+    // picture upload
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#picturePlaceholder').css('background', "url(" + e.target.result + ")");
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#recipePic").change(function() {
+        $("#picturePlaceholder").removeClass("visually-hidden");
+        readURL(this);
 
     });
 
