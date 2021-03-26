@@ -2,13 +2,26 @@
 
 <div class="container py-5 px-2 mx-auto" style="max-width: 50em;">
     <h1>Meals</h1>
-    <form class="form">
-        <div class="input-group mb-2 pl-0 col">
-            <input type="search" class="form-control" id="search" placeholder="Search">
-            <label for="search" class="sr-only">Search</label>
-            <button type="submit" class="btn btn-secondary "><i class="fas fa-search"></i></button>
+    <div class="row">
+        <form class="form col">
+            <div class="input-group mb-2 pl-0 col">
+                <input type="search" class="form-control" id="search" placeholder="Search">
+                <label for="search" class="sr-only">Search</label>
+                <button type="submit" class="btn btn-secondary "><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <div class="col-auto ps-0">
+            <!-- <div class="btn-group"> -->
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse"><i class="fas fa-filter"></i></button>
+            <a class="btn btn-primary" role="button" href="meal-edit.php" ><i class="fas fa-plus"></i></a>
+            <!-- </div> -->
         </div>
-    </form>
+    </div>
+    <div class="collapse" id="filterCollapse">
+        <div class="card card-body">
+            Filter filter....
+        </div>
+    </div>
 
     <div class="my-3">
 
@@ -19,7 +32,7 @@
                 <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title mb-3">Hamburger
-                            <div class="float-end text-warning"><i class="far fa-star"></i><i class="far fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <div class="float-end text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
                         </h5>
                         <!-- <div class="float-end">
                             <a class="btn btn-danger" href="#" role="button"><i class="fas fa-times"></i></a>
@@ -47,7 +60,7 @@
                                     <div class="ratio rounded-top" style="--bs-aspect-ratio: 22%; background: url('img/burger.jpg'); background-size: cover; background-position: center;"></div>
                                     <div class="card-body row">
                                         <div class="col">For <kbd class="bg-secondary">5</kbd> people</div>
-                                        <div class="col text-warning text-end"><i class="far fa-star"></i><i class="far fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="col text-warning text-end"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
                                     </div>
                                 </div>
                                 <div class="card mb-3">
@@ -95,7 +108,7 @@
                                 <div class=" text-start me-auto text-muted">Last served 0 days ago</div>
                                 <a type="button" class="btn btn-primary" href="https://natashaskitchen.com/perfect-burger-recipe/" target="_blank"><i class="fas fa-scroll"></i></i></a>
                                 <span class="mx-1"></span>
-                                <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                <button class="btn btn-danger" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="top" title="Sure?" data-bs-html="true" data-bs-content='<a href="?delete=1" class="btn btn-danger me-2">YES</a>'><i class="fas fa-times"></i></button>
                                 <span class="mx-1"></span>
                                 <a type="button" class="btn btn-secondary" href="meal-edit.php"><i class="fas fa-pen"></i></a>
                                 <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button> -->
