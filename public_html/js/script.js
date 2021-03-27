@@ -72,5 +72,23 @@ $(document).ready(function() {
 
 
 
+    $("#recipeCategory").on("input", function() {
+        if (this.value == 0) {
+            $("#newCategory").show();
+        } else {
+            $("#newCategory").hide();
+        }
+    });
+
+    $("#ingredientSearch").on("change", function() {
+        if (this.value == "+ New Ingredient") {
+            $("#ingredientCard").find("input").prop('disabled', false);
+        } else {
+            $("#ingredientCard").find("input").prop('disabled', true);
+        }
+    });
+
+
+
 
 });

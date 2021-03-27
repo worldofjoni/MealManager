@@ -2,6 +2,8 @@
 
 <div class="container py-5 px-2 mx-auto" style="max-width: 50em;">
     <h1>Meals</h1>
+    <hr class="mt-0">
+    
     <div class="row">
         <form class="form col">
             <div class="input-group mb-2 pl-0 col">
