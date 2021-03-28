@@ -1,0 +1,24 @@
+<!-- Meal Card -->
+<div class="card bg-light mb-3">
+            <div class="row g-0" href="#">
+                <div class="col-4 rounded-start" style='background: url("img/burger.jpg"); background-size: cover; background-position: center;'></div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Hamburger
+                            <div class="float-end text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                        </h5>
+                        <!-- <div class="float-end">
+                            <a class="btn btn-danger" href="#" role="button"><i class="fas fa-times"></i></a>
+                            <a class="btn btn-secondary" href="#" role="button"><i class="fas fa-pen"></i></a>
+                            <span class="px-1"></span>
+                            <a class="btn btn-primary" href="#" role="button"><i class="fas fa-external-link-alt"></i></a>
+                        </div> -->
+                        <button type="button" class="btn btn-primary stretched-link float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-external-link-alt"></i></button>
+                        <h6 class="mb-0">Main Ingredients:</h6>
+                        <p class="card-text mb-1">Beef, Cheese, Buns</p>
+                        <p class="card-text text-end"><small class="text-muted">Last Served: 0 days ago</small></p>
+                    </div>
+                </div>
+                <?php include "meal-list-detail.php" ?>
+            </div>
+        </div>

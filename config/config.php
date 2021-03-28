@@ -1,10 +1,15 @@
 <?php
 
-$CONFIG = array(
-    'pagename' => "MealManager",
+function config() { return array(
+    'pagename'  => "mealmanager",
 
+    'dbHost'    => "localhost",
+    'dbUser'    => "root",
+    'dbPw'      => "",
+    'dbName'    => "MealManager",
 
 );
+}
 
 
-?>
+

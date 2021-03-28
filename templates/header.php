@@ -1,9 +1,9 @@
-<?php include("../config/config.php"); ?>
+<?php include_once("../inc/inc.php"); ?>
 
 <!doctype html>
 <html lang="en">
   <head>
-    <title><?php echo $CONFIG['pagename']; ?></title>
+    <title><?php echo config()['pagename']; ?></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

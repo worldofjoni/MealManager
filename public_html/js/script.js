@@ -5,6 +5,8 @@ $(document).ready(function() {
         return new bootstrap.Popover(popoverTriggerEl)
     })
 
+
+    // Star selector ++++++++++++++++++++++++++++++++++++++++++++
     var star1 = "<i class=\"fas fa-star\"> </i>";
     var star2 = "<i class=\"far fa-star\"> </i>";
     var set = 3;
@@ -51,7 +53,7 @@ $(document).ready(function() {
 
     });
 
-    // picture upload
+    // picture upload +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -64,21 +66,32 @@ $(document).ready(function() {
         }
     }
 
-    $("#recipePic").change(function() {
-        $("#picturePlaceholder").removeClass("visually-hidden");
-        readURL(this);
+    function updatePic() {
+        if ($("#recipePic").val() != "") {
+            $("#picturePlaceholder").removeClass("visually-hidden");
+            readURL($("#recipePic")[0]);
+        } else {
+            $("#picturePlaceholder").addClass("visually-hidden");
+        }
 
-    });
+    }
+
+    $("#recipePic").change(updatePic);
+    updatePic();
 
 
-
-    $("#recipeCategory").on("input", function() {
-        if (this.value == 0) {
+    // new Category Field ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    function checkCategory() {
+        if ($("#recipeCategory").val() == 0) {
             $("#newCategory").show();
+            $("#newCategory").prop("required", true);
         } else {
             $("#newCategory").hide();
+            $("#newCategory").prop("required", false);
         }
-    });
+    };
+    checkCategory();
+    $("#recipeCategory").on("input", checkCategory);
 
     $("#ingredientSearch").on("change", function() {
         if (this.value == "+ New Ingredient") {
@@ -88,6 +101,15 @@ $(document).ready(function() {
         }
     });
 
+
+    $("#searchBar").on("keyup", function(event) {
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            $("#searchButton").click();
+        }
+    });
 
 
 
