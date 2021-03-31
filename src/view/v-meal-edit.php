@@ -5,6 +5,18 @@ include_once "inc/inc.php";
 
 class MealEditView {
 
+    public static function doesMealExist($id) {
+        $sql = "SELECT * from meal WHERE M_ID = ?;";
+        $dbc = DB::connect();
+        $sth = $dbc->prepare($sql);
+        $sth->execute([$id]);
+        $res = $sth->fetchAll();
+        if (count($res) > 0 ) {
+            return true;
+        }
+        return false;
+    }
+
     // output html:
     // <option value="1">Potato</option>
     public function getCategories() {
@@ -39,7 +51,7 @@ class MealEditView {
             $sql = "SELECT * from meal WHERE M_ID = ?;";
             $dbc = DB::connect();
             $sth = $dbc->prepare($sql);
-            $sth->execute(array($_GET['id']));
+            $sth->execute([$_GET['id']]);
             $res = $sth->fetchAll();
             if (count($res) > 0 ) {
                 $this->data = $res[0];
