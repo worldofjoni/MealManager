@@ -9,9 +9,9 @@ include "src/view/v-meal-list.php" ?>
     <div class="row">
         <form class="form col" method="get" >
             <div class="input-group mb-2 pl-0 col">
-                <input type="search" class="form-control" id="searchBar" placeholder="Search" name="search" >
+                <input type="search" class="form-control" id="searchBar" placeholder="Search" name="search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : "";?>" >
                 <label for="searchBar" class="sr-only" value>Search</label>
-                <button type="submit" class="btn btn-secondary" id="searchButton" name="submit" value="submit"><i class="fas fa-search"></i></button>
+                <button type="submit" class="btn btn-secondary" id="searchButton"><i class="fas fa-search"></i></button>
             </div>
         </form>
         <div class="col-auto ps-0">
@@ -32,7 +32,13 @@ include "src/view/v-meal-list.php" ?>
 
         <?php 
         $mlv = new MealListView();
-        $mlv->loadMealList();
+        if (isset($_GET['search']))
+        {
+            $mlv->loadMealList($_GET['search']);
+        }
+        else {
+            $mlv->loadMealList();
+        }
 
         if(count($mlv->mealList) == 0) { ?>
             <div class="w-100 text-center"><em class="text-muted">You seem verry hungry... Plan your next meal <a href="meal-edit.php">here</a></em></div>

@@ -7,11 +7,18 @@ class MealListView {
 
     public $mealList;
 
-    public function loadMealList() {
+    public function loadMealList($search = null) {
         $dbc = DB::connect();
-        $sql = "SELECT * FROM meal;";
-        $res = $dbc->query($sql);
-        $this->mealList = $res->fetchAll();
+        if (isset($search)){
+            $sql = "SELECT * FROM meal WHERE Meal LIKE ?;";            
+            $stmt = $dbc->prepare($sql);
+            $stmt->execute(['%'.$search.'%']);
+            $this->mealList = $stmt->fetchAll();
+        } else {
+            $sql = "SELECT * FROM meal;";
+            $res = $dbc->query($sql);
+            $this->mealList = $res->fetchAll();
+        }
 
     }
 
