@@ -62,7 +62,7 @@
                                 <span class="mx-1"></span>
                                 <button class="btn btn-danger" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="top" title="Sure?" data-bs-html="true" data-bs-content='<a href="?delete=1" class="btn btn-danger me-2">YES</a>'><i class="fas fa-times"></i></button>
                                 <span class="mx-1"></span>
-                                <a type="button" class="btn btn-secondary" href="meal-edit.php"><i class="fas fa-pen"></i></a>
+                                <a type="button" class="btn btn-secondary" href="meal-edit.php?id=1"><i class="fas fa-pen"></i></a>
                                 <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button> -->
                             </div>
                         </div>

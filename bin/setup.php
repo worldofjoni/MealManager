@@ -1,12 +1,51 @@
 <?php
 include_once dirname(__FILE__, 2).'/inc/inc.php';
 
+if (in_array("help", $argv) || in_array("-h", $argv) || in_array("--help", $argv))
+{
+    echo "Help page for setup.php\n";
+    echo "This comand sets up initial database tables\n";
+    echo "there are the following opotions for this command:\n";
+    echo "\t--help               \t-h   \t show help\n";
+    echo "\t--delete             \t-d   \t delets existing tables and data!\n";
+    echo "\t--no-default-entries \t-e   \t prevents Data initialization!\n";
+
+    exit();
+}
+
+$con = DB::connect();
+
+// +++++++++++++++++++++ Delete old Database ++++++++++++++++++++++++++++++
+if (in_array("--delete", $argv) || in_array("-d", $argv) )
+{
+    echo "deleting old tables...\n";
+    try {
+        $sql = "SET FOREIGN_KEY_CHECKS = 0;
+        DROP TABLE IF EXISTS Category;
+        DROP TABLE IF EXISTS Meal;
+        DROP TABLE IF EXISTS Ingredient;
+        DROP TABLE IF EXISTS History;
+        DROP TABLE IF EXISTS Unit;
+        DROP TABLE IF EXISTS MealIngredient;";
+        $con->query($sql);
+    } catch (Exception $e)
+    {
+        echo "Error: ".$e->getMessage()."\n";
+        echo "SQL: ".$sql."\n";
+        exit();
+    }
+
+    echo "deleting old files..\n";
+    define("UPLOAD_DIR", "public_html/uploads");
+    $files = array_filter(scandir(UPLOAD_DIR), function ($a) {return !str_starts_with($a, ".");});
+    array_walk($files, function($a) {unlink(UPLOAD_DIR."/".$a);});
+}
+
 
 
 // ++++++++++++++++++++ Create database Tables ++++++++++++++++++++++++++++
 echo "Creating Database Tables .... <br>\n";
 
-$con = DB::connect();
 
 
 // Meal Table
@@ -41,12 +80,6 @@ try {
     $con->query($sql);
 
 
-    // 
-    $sql = "CREATE TABLE IF NOT EXISTS Ingredient (
-            I_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT
-        );";
-    $con->query($sql);
-
     // History
     $sql = "CREATE TABLE IF NOT EXISTS History (
             H_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -80,4 +113,29 @@ try {
 {
     echo "Error: ".$e->getMessage()."\n";
     echo "SQL: ".$sql."\n";
+}
+
+
+
+// ++++++++++++++++++++ Adding default entries ++++++++++++++++++++++++++++
+if (in_array("--no-default-entries", $argv) || in_array("-e", $argv)) {}
+else {
+
+    echo "Adding default entries .... <br>\n";
+    
+    
+    try {
+        // categories
+        $sql = 'INSERT IGNORE INTO category (C_ID, Category) VALUES (1, "Noodles"), (2, "Rice"), (3, "Potato"), (4, "Dough");';
+        $con->query($sql);
+
+        // meals
+        $sql = 'INSERT IGNORE INTO meal (M_ID, C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (1, 1, "Spagetti Bolognese", "my favorite meal", 5, "", "https://google.de", 1), (2, 3, "Pommes", "also tasty", 4, "", "", 1)';
+        $con->query($sql);
+        
+    } catch (Exception $e)
+    {
+        echo "Error: ".$e->getMessage()."\n";
+        echo "SQL: ".$sql."\n";
+    }
 }

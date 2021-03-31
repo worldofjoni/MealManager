@@ -35,9 +35,11 @@ if (isset($_POST['submit'])) {
 
         }
 
-        $sql = "INSERT INTO Meal (C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (:category, :recipeName, :description, :stars, :recipePic, :recipeURL, 0)";
+        $sql = "INSERT INTO Meal (C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (:category, :recipeName, :description, :stars, :recipePic, :recipeURL, :portions)";
         $stmt = $dbc->prepare($sql);
-        $vals = array(':category' => $_POST['category'], ':recipeName' => $_POST['recipeName'], ':description' => $_POST['description'], ':stars' => $_POST['stars'], ':recipePic' => $recipePic, ':recipeURL' => $_POST['recipeURL']);
+        $vals = array(':category' => $_POST['category'], ':recipeName' => $_POST['recipeName'], ':description' => $_POST['description'], ':stars' => $_POST['stars'], ':recipePic' => $recipePic, ':recipeURL' => $_POST['recipeURL'], ':portions' => $_POST['portions']);
         $stmt->execute($vals);
+    } else {
+        echo "<br>Nothing done!";
     }
 }

@@ -9,7 +9,7 @@ $(document).ready(function() {
     // Star selector ++++++++++++++++++++++++++++++++++++++++++++
     var star1 = "<i class=\"fas fa-star\"> </i>";
     var star2 = "<i class=\"far fa-star\"> </i>";
-    var set = 3;
+    var set = $("#stars").val();
 
     function getId(obj) {
         var oid = $(obj).attr('id').substr(5, 6);
@@ -65,9 +65,11 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
+    console.log($("#recipePic").data('set'))
 
     function updatePic() {
-        if ($("#recipePic").val() != "") {
+        if ($("#recipePic").val() != "" || $("#recipePic").data('set') != undefined) {
+            console.log("first");
             $("#picturePlaceholder").removeClass("visually-hidden");
             readURL($("#recipePic")[0]);
         } else {
