@@ -80,3 +80,5 @@ if (isset($_POST['submit'])) {
         echo "<br>meal exists! prepare editing";
     }
 }
+
+header("Location: ..");

@@ -21,10 +21,12 @@ $(document).ready(function() {
         for (var i = 5; i > parseInt(oid); i--) {
             $("#star-" + i).children().removeClass('fas');
             $("#star-" + i).children().addClass('far');
+            $("#star-" + i).children().css("transform", "scale(1)");
         }
         for (var i = parseInt(oid); i >= 0; i--) {
             $("#star-" + i).children().removeClass('far');
             $("#star-" + i).children().addClass('fas');
+            $("#star-" + i).children().css("transform", "scale(1.2)");
         }
     };
 
@@ -41,6 +43,11 @@ $(document).ready(function() {
         },
         function() {
             setHtmlTo(set);
+            for (var i = 5; i >= 0; i--) {
+                $("#star-" + i).children().css("transform", "scale(1)");
+                // $("#star-" + i).children().addClass('fas');
+                // $("#star-" + i).children().css("transform", "scale(1.1)");
+            }
         });
 
     $(".star-select").click(function() {
@@ -48,7 +55,7 @@ $(document).ready(function() {
         set = getId(this);
         setHtmlTo(set);
         $("#stars").val(set);
-        setEffect("rotate(.2turn)", set);
+        setEffect("rotate(.2turn) scale(1.2)", set);
         setTimeout(setEffect, 250, "rotate(0)", set);
 
     });

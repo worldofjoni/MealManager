@@ -2,10 +2,10 @@
 <div class="col-lg-8">
     <h4 class="text-center pb-3">Ingredients</h4>
     <div class="row">
-        <div class="col">
-            <div class="input-group mb-3">
+        <div class="col-sm">
+            <div class="input-group pb-3">
                 <span class="input-group-text" id="portions-addon-1">For </span>
-                <input type="number" min="0" class="form-control" id="portions" name="portions" value="<?php echo $mev->getData('Portions');?>">
+                <input type="number" min="0" class="form-control" id="portions" name="portions" value="<?php echo $mev->getData('Portions');?>" required>
                 <span class="input-group-text" id="portions-addon-2"> Portion(s)</span>
             </div>
             <div class="list-group">
@@ -19,8 +19,8 @@
                 <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
             </div>
         </div>
-        <div class="col-auto d-flex px-0">
-            <div class="align-self-center d-grid gap-2">
+        <div class="col-sm-auto d-flex px-0">
+            <div class="align-self-center d-sm-grid gap-2 m-auto my-3">
                 <button class="btn btn-primary"><i class="fas fa-chevron-left"></i></button>
                 <button class="btn btn-secondary"><i class="fas fa-minus-circle"></i></button>
             </div>

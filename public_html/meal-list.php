@@ -1,4 +1,5 @@
-<?php include("../templates/header.php"); ?>
+<?php include("../templates/header.php");
+include "src/view/v-meal-list.php" ?>
 
 <div class="container py-5 px-2 mx-auto" style="max-width: 50em;">
     <h1>Meals</h1>
@@ -29,8 +30,18 @@
     <!-- Meal list -->
     <div class="my-3">
 
-        <?php include "templates/meal-list/meal-list-entry.php"?>
+        <?php 
+        $mlv = new MealListView();
+        $mlv->loadMealList();
 
+        if(count($mlv->mealList) == 0) { ?>
+            <div class="w-100 text-center"><em class="text-muted">You seem verry hungry... Plan your next meal <a href="meal-edit.php">here</a></em></div>
+        <?php }
+        foreach ($mlv->mealList as $meal)
+        {
+            include "templates/meal-list/meal-list-entry.php";
+        }
+        ?>
 
     </div>
 
