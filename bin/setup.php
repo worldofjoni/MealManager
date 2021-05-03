@@ -73,7 +73,7 @@ try {
     // Ingredient
     $sql = "CREATE TABLE IF NOT EXISTS Ingredient (
             I_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-            Ingredient VARCHAR(256) NOT NULL,
+            Ingredient VARCHAR(256) NOT NULL UNIQUE,
             Vegetarian BOOLEAN NOT NULL
 
         );";
@@ -130,7 +130,17 @@ else {
         $con->query($sql);
 
         // meals
-        $sql = 'INSERT IGNORE INTO meal (M_ID, C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (1, 1, "Spagetti Bolognese", "my favorite meal", 4, "", "https://google.de", 1), (2, 3, "Pommes", "also tasty", 5, "", "", 1), (3, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)';
+        $sql = 'INSERT IGNORE INTO meal (M_ID, C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (1, 1, "Spagetti Bolognese", "my favorite meal", 4, "", "https://google.de", 1), (2, 3, "Pommes", "also tasty", 5, "", "", 1), (3, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)
+        -- , (4, 1, "Spagetti Bolognese", "my favorite meal", 4, "", "https://google.de", 1), (5, 3, "Pommes", "also tasty", 5, "", "", 1), (6, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)
+        ';
+        $con->query($sql);
+
+        // Units
+        $sql = 'INSERT IGNORE INTO unit (U_ID, Unit) VALUES (1, "Pice"), (2, "kg"), (3, "g"), (4, "Bags")';
+        $con->query($sql);
+
+        // Ingredients
+        $sql = 'INSERT IGNORE INTO ingredient (I_ID, Ingredient, Vegetarian) VALUES (1, "Tomato", true), (2, "Beaf", false), (3, "Cheese", true), (4, "Letters", true), (5, "Cucumber", true)';
         $con->query($sql);
         
     } catch (Exception $e)

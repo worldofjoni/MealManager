@@ -62,6 +62,7 @@ $(document).ready(function() {
 
     // picture upload +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     function readURL(input) {
+        if (!input) return;
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -72,11 +73,9 @@ $(document).ready(function() {
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
-    console.log($("#recipePic").data('set'))
 
     function updatePic() {
         if ($("#recipePic").val() != "" || $("#recipePic").data('set') != undefined) {
-            console.log("first");
             $("#picturePlaceholder").removeClass("visually-hidden");
             readURL($("#recipePic")[0]);
         } else {
@@ -119,6 +118,43 @@ $(document).ready(function() {
             $("#searchButton").click();
         }
     });
+
+    // Ingredient list selection
+    var ingredients, currentIngredient;
+
+    function loadIngredient() {
+        $("button.ingredient.active").removeClass("active");
+        $(this).addClass("active");
+        $.get("control/c-get-ingredients.php", function(data) {
+            ingredients = JSON.parse(data);
+            // console.log(ingredients);
+        });
+        $("#ingredient-detail").load("view/ingredient-detail.php?id=" + $(this).data("ingredient-id"), ingredientLoaded);
+
+
+    }
+
+    function ingredientLoaded() {
+        // ingredient autocompeate
+        $("#ingredientName").change(function() {
+            // check if ingredient exists and set vegettarian and lock accprdingly
+            var name = $(ingredientName).val();
+            var found = ingredients.find(ing => ing.Ingredient == name);
+            if (found) {
+                // console.log("found");
+                $("#ingredientName").attr("disabled", true);
+                $("#ingredientVegie").attr("checked", found.vegetarian);
+                $("#ingredientVegie").attr("disabled", true);
+                currentIngredient = found;
+                console.log(currentIngredient);
+            }
+
+        });
+    }
+
+
+    $("button.ingredient").click(loadIngredient);
+    loadIngredient.call($("button.ingredient")[0]);
 
 
 

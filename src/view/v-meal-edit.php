@@ -17,6 +17,8 @@ class MealEditView {
         return false;
     }
 
+
+
     // output html:
     // <option value="1">Potato</option>
     public function getCategories() {
