@@ -122,6 +122,17 @@ $(document).ready(function() {
     // Ingredient list selection
     var ingredients, currentIngredient;
 
+    function findGetParameter(parameterName) {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
     function loadIngredient() {
         $("button.ingredient.active").removeClass("active");
         $(this).addClass("active");
@@ -129,7 +140,7 @@ $(document).ready(function() {
             ingredients = JSON.parse(data);
             // console.log(ingredients);
         });
-        $("#ingredient-detail").load("view/ingredient-detail.php?id=" + $(this).data("ingredient-id"), ingredientLoaded);
+        $("#ingredient-detail").load("view/ingredient-detail.php?i_id=" + $(this).data("ingredient-id") + "&m_id=" + findGetParameter("id"), ingredientLoaded);
 
 
     }

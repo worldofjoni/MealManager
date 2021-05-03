@@ -102,6 +102,7 @@ try {
         I_ID INT NOT NULL,
         Amount SMALLINT NOT NULL,
         U_ID INT NOT NULL,
+        Main BOOLEAN NOT NULL DEFAULT false,
         PRIMARY KEY(M_ID, I_ID)
 
     );";
@@ -141,6 +142,10 @@ else {
 
         // Ingredients
         $sql = 'INSERT IGNORE INTO ingredient (I_ID, Ingredient, Vegetarian) VALUES (1, "Tomato", true), (2, "Beaf", false), (3, "Cheese", true), (4, "Letters", true), (5, "Cucumber", true)';
+        $con->query($sql);
+
+        // MealIngredient
+        $sql = 'INSERT IGNORE INTO mealingredient (M_ID, I_ID, Amount, U_ID, Main) VALUES (1, 1, 2, 1, false), (3, 2, 500, 3, true), (3, 3, 2, 4, true), (3, 4, 100, 3, false), (3, 5, 2, 1, false)';
         $con->query($sql);
         
     } catch (Exception $e)

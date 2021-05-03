@@ -5,8 +5,7 @@
         <div class="col-sm">
 
             <div class="list-group">
-                <button type="button" data-ingredient-id="1" class="ingredient list-group-item list-group-item-action">A</button>
-                <button type="button" data-ingredient-id="2" class="ingredient list-group-item list-group-item-action">B second link item</button>
+                <?php $mev->getIngredients(); ?>
                 <button type="button" data-ingredient-id="0" class="ingredient list-group-item list-group-item-action"><i class="fas fa-plus"></i> New Ingredient</button>
             </div>
         </div>

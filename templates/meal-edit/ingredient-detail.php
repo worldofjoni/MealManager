@@ -29,13 +29,13 @@
     </div>
 </div>
 <div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" value="" id="mainIngredient" checked>
+    <input class="form-check-input" type="checkbox" value="" id="mainIngredient"<?php echo ($iv->getData('Main') ? " checked" : " u"); ?>>
     <label class="form-check-label" for="mainIngredient">Main Ingredient</label>
 </div>
 <div class="input-group mb-3">
-    <input type="number" class="form-control" placeholder="Amount" aria-label="Amount">
+    <input type="number" class="form-control" placeholder="Amount" aria-label="Amount" value="<?php echo $iv->getData('Amount')?>">
     <select class="form-select" aria-label="Default select example">
         <option selected value="" disabled>Unit Type</option>
-        <?php IngredietView::getUnits(); ?>
+        <?php $iv->getUnits(); ?>
     </select>
 </div>

@@ -37,6 +37,7 @@ class MealEditView {
     }
 
     private $data = ['M_ID' => 0, 'C_ID' => 0, 'Meal' => "", 'Description' => "", 'Rating' => 3, 'Picture' => "", 'RecipeURL' => "", 'Portions' => 1];
+    
 
     // public $recipeID = 0;
     // public $categoryID = 0;
@@ -61,6 +62,22 @@ class MealEditView {
 
         }
     }
+
+    public function getIngredients() {
+        if (isset($_GET['id']))
+        {
+            
+            $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) INNER JOIN unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
+            $dbc = DB::connect();
+            $sth = $dbc->prepare($sql);
+            $sth->execute([$_GET['id']]);
+            foreach ($sth->fetchAll() as $res)
+            {
+                echo '<button type="button" data-ingredient-id="'.$res['I_ID'].'" class="ingredient list-group-item list-group-item-action">'.($res['Main'] ? '<b>':'').$res['Ingredient'].($res['Main'] ? '</b>':'').'<span class="badge '.($res['Vegetarian'] == 1 ? 'bg-success' : 'bg-warning text-dark').' ms-2">'.$res['Amount'].' '.$res['Unit'].'</span></button>';
+            }
+        }
+    }
+    
 
     public function getData($key)
     {
