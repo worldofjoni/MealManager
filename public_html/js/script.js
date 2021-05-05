@@ -133,31 +133,38 @@ $(document).ready(function() {
         return result;
     }
 
-    function loadIngredient() {
-        $("button.ingredient.active").removeClass("active");
-        $(this).addClass("active");
+    function refreshIngredientVar() {
         $.get("control/c-get-ingredients.php", function(data) {
             ingredients = JSON.parse(data);
             // console.log(ingredients);
         });
+    }
+
+    function loadIngredient() {
+        $("button.ingredient.active").removeClass("active");
+        $(this).addClass("active");
+        refreshIngredientVar()
         $("#ingredient-detail").load("view/ingredient-detail.php?i_id=" + $(this).data("ingredient-id") + "&m_id=" + findGetParameter("id"), ingredientLoaded);
 
 
     }
 
-    function ingredientLoaded() {
-        // ingredient autocompeate
+    function ingredientLoaded(data) {
+        // ingredient autocompleate ---------------------------------------------+
         $("#ingredientName").change(function() {
             // check if ingredient exists and set vegettarian and lock accprdingly
-            var name = $(ingredientName).val();
+            var name = $("#ingredientName").val();
             var found = ingredients.find(ing => ing.Ingredient == name);
             if (found) {
                 // console.log("found");
                 $("#ingredientName").attr("disabled", true);
+                $("#ingredientName").data("ingredient-id", found.I_ID);
+                // console.log($("#ingredientName").data("ingredient-id"))
                 $("#ingredientVegie").attr("checked", found.vegetarian);
                 $("#ingredientVegie").attr("disabled", true);
+
                 currentIngredient = found;
-                console.log(currentIngredient);
+                // console.log(currentIngredient);
             }
 
         });
@@ -167,6 +174,60 @@ $(document).ready(function() {
     $("button.ingredient").click(loadIngredient);
     loadIngredient.call($("button.ingredient")[0]);
 
+    // ingredient delete button
+    $("#removeButton").click(function() {
+        iid = $(".ingredient.active").data("ingredient-id")
+        mid = findGetParameter("id");
+        if (iid != 0 && mid != 0) {
+            deleteIngredient(mid, iid);
+        }
 
+    });
+
+    function deleteIngredient(meal, ingredient) {
+        $.post("control/c-remove-ingredient.php", { m_id: meal, i_id: ingredient }, function(data) {
+            console.log("removed: " + data)
+            $(".ingredient.active").remove()
+            loadIngredient.call($("button.ingredient")[0]);
+            refreshIngredientVar()
+        });
+    }
+
+    $("#addButton").click(function() {
+        iid = $("#ingredientName").data("ingredient-id")
+        ingredientName = $("#ingredientName").val();
+        isVeg = $("#ingredientVegie").prop("checked")
+        isnew = $("#ingredientName").attr("disabled") != "disabled"
+
+        if (isnew) {
+            $.post("control/c-create-ingredient.php", { i_name: ingredientName, i_vegetarian: isVeg }, linkIngredient);
+        } else {
+            linkIngredient(iid);
+        }
+    });
+
+    function linkIngredient(data) {
+        refreshIngredientVar()
+        mid = findGetParameter("id");
+        isMain = $("#mainIngredient").prop("checked")
+        amountVal = $("#ingredientAmount").val()
+        unit = $("#IngrUnit").find(":selected").val()
+
+        $.post("control/c-add-ingredient.php", { m_id: mid, i_id: data, main: isMain, amount: amountVal, u_type: unit }, function(data) {
+            refreshIngredientVar()
+            reloadIngredientsList()
+            console.log(data);
+        });
+
+    }
+
+    function reloadIngredientsList() {
+
+        $("#ingredientFrame").load("view/ingredient-list.php?id=" + findGetParameter("id"), function() {
+            $("button.ingredient").click(loadIngredient);
+            loadIngredient.call($("button.ingredient")[0]);
+
+        });
+    }
 
 });

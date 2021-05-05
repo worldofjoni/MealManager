@@ -1,18 +1,15 @@
 <!-- Ingredients Colum -->
-<div class="col-lg-8 ps-lg-5">
+<div class="col-lg-8 ps-lg-5 pb-3">
     <h4 class="text-center pb-3">Ingredients</h4>
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm" id="ingredientFrame">
 
-            <div class="list-group">
-                <?php $mev->getIngredients(); ?>
-                <button type="button" data-ingredient-id="0" class="ingredient list-group-item list-group-item-action"><i class="fas fa-plus"></i> New Ingredient</button>
-            </div>
+            <?php include "templates/meal-edit/ingredients-list.php" ?>
         </div>
         <div class="col-sm-auto d-flex px-0">
             <div class="align-self-center d-sm-grid gap-2 m-auto my-3">
-                <button type="button" class="btn btn-primary"><i class="fas fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-secondary"><i class="fas fa-minus-circle"></i></button>
+                <button type="button" class="btn btn-primary" id="addButton"><i class="fas fa-chevron-left"></i></button>
+                <button type="button" class="btn btn-secondary" id="removeButton"><i class="fas fa-minus-circle"></i></button>
             </div>
         </div>
         <div class="col" id="ingredient-detail">

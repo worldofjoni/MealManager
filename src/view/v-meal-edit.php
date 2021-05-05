@@ -67,13 +67,16 @@ class MealEditView {
         if (isset($_GET['id']))
         {
             
-            $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) INNER JOIN unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
+            $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
             $dbc = DB::connect();
             $sth = $dbc->prepare($sql);
             $sth->execute([$_GET['id']]);
             foreach ($sth->fetchAll() as $res)
             {
-                echo '<button type="button" data-ingredient-id="'.$res['I_ID'].'" class="ingredient list-group-item list-group-item-action">'.($res['Main'] ? '<b>':'').$res['Ingredient'].($res['Main'] ? '</b>':'').'<span class="badge '.($res['Vegetarian'] == 1 ? 'bg-success' : 'bg-warning text-dark').' ms-2">'.$res['Amount'].' '.$res['Unit'].'</span></button>';
+                echo '<button type="button" data-ingredient-id="'.$res['I_ID'].'" class="ingredient list-group-item list-group-item-action">'.($res['Main'] ? '<b>':'').$res['Ingredient'].($res['Main'] ? '</b>':'');
+                if ($res['U_ID'] != 0) echo '<span class="badge '.($res['Vegetarian'] == 1 ? 'bg-success' : 'bg-warning text-dark').' ms-2">'.$res['Amount'].' '.$res['Unit'].'</span>';
+                else echo '<span class="badge '.($res['Vegetarian'] == 1 ? 'bg-success' : 'bg-warning text-dark').' ms-2">-</span>';
+                echo '</button>';
             }
         }
     }
