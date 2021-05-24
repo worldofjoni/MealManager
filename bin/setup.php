@@ -131,7 +131,7 @@ else {
         $con->query($sql);
 
         // meals
-        $sql = 'INSERT IGNORE INTO meal (M_ID, C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (1, 1, "Spagetti Bolognese", "my favorite meal", 4, "", "https://google.de", 1), (2, 3, "Pommes", "also tasty", 5, "", "", 1), (3, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)
+        $sql = 'INSERT IGNORE INTO meal (M_ID, C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (1, 1, "Spagetti Bolognese", "### my favorite meal", 4, "", "https://google.de", 1), (2, 3, "Pommes", "also tasty", 5, "", "", 1), (3, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)
         -- , (4, 1, "Spagetti Bolognese", "my favorite meal", 4, "", "https://google.de", 1), (5, 3, "Pommes", "also tasty", 5, "", "", 1), (6, 5, "Hamburger", "Delicios Hamburger", 3, "../img/burger.jpg", "https://natashaskitchen.com/perfect-burger-recipe/", 5)
         ';
         $con->query($sql);

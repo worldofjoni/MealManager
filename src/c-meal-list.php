@@ -3,7 +3,7 @@ include_once "inc/inc.php";
 include_once "vendor/autoload.php";
 
 
-class MealListView {
+class MealList {
 
     public $mealList;
 

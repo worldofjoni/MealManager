@@ -1,17 +1,18 @@
 <?php
-include "../templates/header.php";
-include "src/view/v-meal-edit.php";
+include "../templates/t-header.php";
+include "src/c-meal-edit.php";
 
-$mev = new MealEditView();
+$mev = new MealEdit();
 $mev->determineMeal();
 
 ?>
 
+<script src="js/meal-edit.js" defer></script>
 
-<div class="container py-5 px-5 mx-auto" style="max-width: 80em;">
+<div class="container py-5 px-2 mx-auto" style="max-width: 80em;">
     <h1 mb-0>Edit Meal</h1>
     <hr class="mt-0">
-    <form action="control/c-meal-edit.php" method="post" enctype="multipart/form-data">
+    <form action="api/form/a-edit-create-meal.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $mev->getData('M_ID'); ?>">
         <div class="row">
 
@@ -67,7 +68,7 @@ $mev->determineMeal();
 
             </div><!-- End First Colom -->
 
-            <?php include "templates/meal-edit/ingredients-pane.php"; ?>
+            <?php include "templates/meal-edit/t-ingredients-pane.php"; ?>
         </div>
         <div>
             <button type="submit" name="submit" value="submit" class="btn btn-primary">Save</button>
@@ -80,4 +81,4 @@ $mev->determineMeal();
 
 
 
-<?php include("../templates/footer.php"); ?>
+<?php include("../templates/t-footer.php"); ?>

@@ -1,7 +1,7 @@
 <?php
 
-include_once("../../inc/inc.php");
-include_once "src/view/v-meal-edit.php";
+include_once("../../../inc/inc.php");
+include_once "src/c-meal-edit.php";
 
 print_r($_POST);
 echo "<br>";
@@ -9,7 +9,7 @@ print_r($_FILES);
 
 
 if (isset($_POST['submit'])) {
-    if ($_POST['id'] == "0" || MealEditView::doesMealExist($_POST['id'])) {
+    if ($_POST['id'] == "0" || MealEdit::doesMealExist($_POST['id'])) {
         $dbc = DB::connect();
 
         // Check category and create new
@@ -76,9 +76,9 @@ if (isset($_POST['submit'])) {
             }
         }
 
-    } else if (MealEditView::doesMealExist($_POST['id'])) {
+    } else if (MealEdit::doesMealExist($_POST['id'])) {
         echo "<br>meal exists! prepare editing";
     }
 }
 
-header("Location: ..");
+header("Location: ../..");

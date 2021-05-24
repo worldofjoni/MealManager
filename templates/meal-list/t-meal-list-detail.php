@@ -20,37 +20,37 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-success">0,5 kg</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">0,5 kg</kbd></div>
                                 <div class="col">Beaf</div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-success">500g</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">500g</kbd></div>
                                 <div class="col">Chese</div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-success">10</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">10</kbd></div>
                                 <div class="col">Bun</div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-secondary">2</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">2</kbd></div>
                                 <div class="col">Tomato</div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-secondary">1</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">1</kbd></div>
                                 <div class="col">Salat</div>
                             </div>
                         </li>
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-3 col-lg-2 text-end"><kbd class="bg-secondary">3</kbd></div>
+                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">3</kbd></div>
                                 <div class="col">Onion</div>
                             </div>
                         </li>
@@ -61,20 +61,22 @@
                 <div class="card">
                     <h6 class="card-header">Description</h6>
                     <div class="card-body">
-                        <?php echo MealListView::convertMarkdown($meal['Description']); ?>
+                        <?php echo MealList::convertMarkdown($meal['Description']); ?>
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <div class=" text-start me-auto text-muted">Last served 0 days ago</div>
-                <?php if ($meal['RecipeURL'] != "") { ?>
-                    <a type="button" class="btn btn-primary" href="<?php echo $meal['RecipeURL']; ?>" target="_blank"><i class="fas fa-scroll"></i></i></a>
+                <div>
+                    <?php if ($meal['RecipeURL'] != "") { ?>
+                        <a type="button" class="btn btn-primary" href="<?php echo $meal['RecipeURL']; ?>" target="_blank"><i class="fas fa-scroll"></i></i></a>
+                        <span class="mx-1"></span>
+                    <?php } ?>
+                    <button class="btn btn-danger" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="top" title="Sure?" data-bs-html="true" data-bs-content='<a href="api/form/a-delete-meal.php?id=<?php echo $meal['M_ID']; ?>" class="btn btn-danger me-2">YES</a>'><i class="fas fa-times"></i></button>
                     <span class="mx-1"></span>
-                <?php } ?>
-                <button class="btn btn-danger" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="top" title="Sure?" data-bs-html="true" data-bs-content='<a href="control\c-delete-meal.php?id=<?php echo $meal['M_ID']; ?>" class="btn btn-danger me-2">YES</a>'><i class="fas fa-times"></i></button>
-                <span class="mx-1"></span>
-                <a type="button" class="btn btn-secondary" href="meal-edit.php?id=<?php echo $meal['M_ID'] ?>"><i class="fas fa-pen"></i></a>
+                    <a type="button" class="btn btn-secondary" href="meal-edit.php?id=<?php echo $meal['M_ID'] ?>"><i class="fas fa-pen"></i></a>
+                </div>
                 <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button> -->
             </div>
         </div>

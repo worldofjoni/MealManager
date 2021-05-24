@@ -1,5 +1,10 @@
-<?php include("../templates/header.php");
-include "src/view/v-meal-list.php" ?>
+<?php 
+include_once("../inc/inc.php");
+include("../templates/t-header.php");
+include "src/c-meal-list.php" 
+?>
+
+<script src="js/meal-list.js" defer></script>
 
 <div class="container py-5 px-2 mx-auto" style="max-width: 50em;">
     <h1>Meals</h1>
@@ -31,7 +36,7 @@ include "src/view/v-meal-list.php" ?>
     <div class="my-3">
 
         <?php 
-        $mlv = new MealListView();
+        $mlv = new MealList();
         if (isset($_GET['search']))
         {
             $mlv->loadMealList($_GET['search']);
@@ -41,11 +46,11 @@ include "src/view/v-meal-list.php" ?>
         }
 
         if(count($mlv->mealList) == 0) { ?>
-            <div class="w-100 text-center"><em class="text-muted">You seem verry hungry... Plan your next meal <a href="meal-edit.php">here</a></em></div>
+            <div class="w-100 text-center"><em class="text-muted">No meal matching your request... Create a new one <a href="meal-edit.php">here</a></em></div>
         <?php }
         foreach ($mlv->mealList as $meal)
         {
-            include "templates/meal-list/meal-list-entry.php";
+            include "templates/meal-list/t-meal-list-entry.php";
         }
         ?>
 
@@ -63,4 +68,4 @@ include "src/view/v-meal-list.php" ?>
 
 
 
-<?php include("../templates/footer.php"); ?>
+<?php include("../templates/t-footer.php"); ?>

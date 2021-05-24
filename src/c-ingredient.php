@@ -2,7 +2,7 @@
 
 // include_once "../../inc/inc.php";
 
-class IngredietView {
+class Ingrediet {
 
     public function getUnits() {
         $sql = "SELECT * FROM unit";

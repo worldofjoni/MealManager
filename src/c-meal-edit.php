@@ -3,7 +3,7 @@
 include_once "inc/inc.php";
 
 
-class MealEditView {
+class MealEdit {
 
     public static function doesMealExist($id) {
         $sql = "SELECT * from meal WHERE M_ID = ?;";

@@ -1,23 +1,10 @@
-<!-- <div class="pb-3">
-    <input class="form-control" list="ingredientSearchOptions" id="ingredientSearch" placeholder="Type to search..." autocomplete="off" onclick="this.value=''">
-    <datalist id="ingredientSearchOptions">
-        <option value="Potatos">
-        <option value="Noodles">
-        <option value="Tomatos">
-        <option value="Letters">
-        <option value="+ New Ingredient">
-    </datalist>
-</div> -->
-
-<?php ?>
-
 <div class="card mb-3" id="ingredientCard">
     <div class="card-body">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="ingredientName" list="ingredientsDatalist" data-ingredient-id="<?php echo $iv->getData('I_ID'); ?>" placeholder="Ingredient Name" <?php echo ($iv->getData('I_ID') == 0) ? "" : ('value="' . $iv->getData('Ingredient') . '" disabled'); ?>>
             <label for="ingredientName">Ingredient Name</label>
             <datalist id="ingredientsDatalist">
-                <?php IngredietView::getIngredients();?>
+                <?php Ingrediet::getIngredients();?>
 
             </datalist>
         </div>

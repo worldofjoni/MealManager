@@ -5,7 +5,7 @@
         <div class="col-8">
             <div class="card-body">
                 <h5 class="card-title mb-3"><?php echo $meal['Meal']; ?>
-                    <div class="float-end text-warning">
+                    <div class="float-none mt-1 mt-sm-0 float-sm-end text-warning">
                         <?php for ($i = 1; $i <= 5; $i++) { ?>
                             <i class="<?php echo ($i <= $meal['Rating'])  ? "fas" : "far"; ?> fa-star"></i>
                         <?php } ?>
@@ -17,12 +17,12 @@
                             <span class="px-1"></span>
                             <a class="btn btn-primary" href="#" role="button"><i class="fas fa-external-link-alt"></i></a>
                         </div> -->
-                <button type="button" class="btn btn-primary stretched-link float-end" data-bs-toggle="modal" data-bs-target="#mealDetail-<?php echo $meal['M_ID'] ?>"><i class="fas fa-external-link-alt"></i></button>
+                <button type="button" class="btn btn-primary stretched-link float-end hidden-xs" data-bs-toggle="modal" data-bs-target="#mealDetail-<?php echo $meal['M_ID'] ?>"><i class="fas fa-external-link-alt"></i></button>
                 <h6 class="mb-0">Main Ingredients:</h6>
                 <p class="card-text mb-1">Beef, Cheese, Buns</p>
                 <p class="card-text text-end"><small class="text-muted">Last Served: 0 days ago</small></p>
             </div>
         </div>
-        <?php include "meal-list-detail.php" ?>
+        <?php include "t-meal-list-detail.php" ?>
     </div>
 </div>

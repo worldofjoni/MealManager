@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm" id="ingredientFrame">
 
-            <?php include "templates/meal-edit/ingredients-list.php" ?>
+            <?php include "templates/meal-edit/t-ingredients-list.php" ?>
         </div>
         <div class="col-sm-auto d-flex px-0">
             <div class="align-self-center d-sm-grid gap-2 m-auto my-3">

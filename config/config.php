@@ -4,8 +4,8 @@ function config() { return array(
     'pagename'  => "mealmanager",
 
     'dbHost'    => "localhost",
-    'dbUser'    => "root",
-    'dbPw'      => "",
+    'dbUser'    => "user",
+    'dbPw'      => "password",
     'dbName'    => "MealManager",
 
 );
