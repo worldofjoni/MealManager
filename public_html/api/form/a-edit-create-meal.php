@@ -36,13 +36,13 @@ if (isset($_POST['submit'])) {
 
         }
         if (($_POST['id'] == "0")) {
-            $sql = "INSERT INTO Meal (C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (:category, :recipeName, :description, :stars, :recipePic, :recipeURL, :portions)";
+            $sql = "INSERT INTO meal (C_ID, Meal, Description, Rating, Picture, RecipeURL, Portions) VALUES (:category, :recipeName, :description, :stars, :recipePic, :recipeURL, :portions)";
             $stmt = $dbc->prepare($sql);
             $vals = array(':category' => $_POST['category'], ':recipeName' => $_POST['recipeName'], ':description' => $_POST['description'], ':stars' => $_POST['stars'], ':recipePic' => $recipePic, ':recipeURL' => $_POST['recipeURL'], ':portions' => $_POST['portions']);
             $stmt->execute($vals);
 
         } else { // meal does already exist
-            $sql = "UPDATE Meal SET C_ID = :category, Meal = :recipeName, Description = :description, Rating = :stars, RecipeURL = :recipeURL, Portions = :portions WHERE M_ID = :id";
+            $sql = "UPDATE meal SET C_ID = :category, Meal = :recipeName, Description = :description, Rating = :stars, RecipeURL = :recipeURL, Portions = :portions WHERE M_ID = :id";
             $stmt = $dbc->prepare($sql);
             $vals = array(':category' => $_POST['category'], ':recipeName' => $_POST['recipeName'], ':description' => $_POST['description'], ':stars' => $_POST['stars'], ':recipeURL' => $_POST['recipeURL'], ':portions' => $_POST['portions'], ':id' => $_POST['id']);
             $stmt->execute($vals);
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
             if ($recipePic != "") // if a new picture was uploaded
             {
                 // delete old one
-                $sql = "SELECT Picture FROM Meal WHERE M_ID = ?";
+                $sql = "SELECT Picture FROM meal WHERE M_ID = ?";
                 $stmt = $dbc->prepare($sql);
                 $stmt->execute([$_POST['id']]);
                 $res = $stmt->fetchAll();
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                 }
 
                 // link new one
-                $sql = "UPDATE Meal SET Picture = :recipePic WHERE M_ID = :id";
+                $sql = "UPDATE meal SET Picture = :recipePic WHERE M_ID = :id";
                 $stmt = $dbc->prepare($sql);
                 $vals = array(':id' => $_POST['id'], ':recipePic' => $recipePic);
                 $stmt->execute($vals);

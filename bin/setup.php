@@ -21,12 +21,12 @@ if (in_array("--delete", $argv) || in_array("-d", $argv) )
     echo "deleting old tables...\n";
     try {
         $sql = "SET FOREIGN_KEY_CHECKS = 0;
-        DROP TABLE IF EXISTS Category;
-        DROP TABLE IF EXISTS Meal;
-        DROP TABLE IF EXISTS Ingredient;
-        DROP TABLE IF EXISTS History;
-        DROP TABLE IF EXISTS Unit;
-        DROP TABLE IF EXISTS MealIngredient;";
+        DROP TABLE IF EXISTS category;
+        DROP TABLE IF EXISTS meal;
+        DROP TABLE IF EXISTS ingredient;
+        DROP TABLE IF EXISTS history;
+        DROP TABLE IF EXISTS unit;
+        DROP TABLE IF EXISTS mealingredient;";
         $con->query($sql);
     } catch (Exception $e)
     {
@@ -51,14 +51,14 @@ echo "Creating Database Tables .... <br>\n";
 // Meal Table
 try {
     // Category
-    $sql = "CREATE TABLE IF NOT EXISTS Category (
+    $sql = "CREATE TABLE IF NOT EXISTS category (
             C_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             Category VARCHAR(256) NOT NULL
         );";
     $con->query($sql);
 
     // Meal
-    $sql = "CREATE TABLE IF NOT EXISTS Meal (
+    $sql = "CREATE TABLE IF NOT EXISTS meal (
             M_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             C_ID INT NOT NULL,
             Meal VARCHAR(256) NOT NULL,
@@ -71,7 +71,7 @@ try {
     $con->query($sql);
     
     // Ingredient
-    $sql = "CREATE TABLE IF NOT EXISTS Ingredient (
+    $sql = "CREATE TABLE IF NOT EXISTS ingredient (
             I_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             Ingredient VARCHAR(256) NOT NULL UNIQUE,
             Vegetarian BOOLEAN NOT NULL
@@ -81,7 +81,7 @@ try {
 
 
     // History
-    $sql = "CREATE TABLE IF NOT EXISTS History (
+    $sql = "CREATE TABLE IF NOT EXISTS history (
             H_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             M_ID INT NOT NULL,
             Date DATE NOT NULL
@@ -89,7 +89,7 @@ try {
     $con->query($sql);
 
     // Unit
-    $sql = "CREATE TABLE IF NOT EXISTS Unit (
+    $sql = "CREATE TABLE IF NOT EXISTS unit (
             U_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
             Unit VARCHAR(256) NOT NULL
 
@@ -97,7 +97,7 @@ try {
     $con->query($sql);
 
     // MealIngredient
-    $sql = "CREATE TABLE IF NOT EXISTS MealIngredient (
+    $sql = "CREATE TABLE IF NOT EXISTS mealingredient (
         M_ID INT NOT NULL AUTO_INCREMENT,
         I_ID INT NOT NULL,
         Amount SMALLINT NOT NULL,
