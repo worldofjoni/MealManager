@@ -3,9 +3,9 @@
 include_once("../../../inc/inc.php");
 include_once "src/c-meal-edit.php";
 
-print_r($_POST);
-echo "<br>";
-print_r($_FILES);
+// print_r($_POST);
+// echo "<br>";
+// print_r($_FILES);
 
 
 if (isset($_POST['submit'])) {

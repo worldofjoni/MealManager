@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM meal WHERE M_ID = ?";
     $stmt = $con->prepare($sql);
     $stmt->execute([$_GET['id']]);
-    echo "deleted Meal #".$_GET['id'];
+    #echo "deleted Meal #".$_GET['id'];
     Header("Location: ../..");
 
 }
