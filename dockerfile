@@ -1,10 +1,9 @@
-FROM php:7-apache
+FROM php:8-apache
 
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY apache/start-apache /usr/local/bin/
 RUN chmod 755 /usr/local/bin/start-apache
 RUN a2enmod rewrite
-RUN a2enmod 
 
 # Copy application source
 COPY . /var/www/

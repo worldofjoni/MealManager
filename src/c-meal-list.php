@@ -17,6 +17,7 @@ class MealList {
         } else {
             $sql = "SELECT * FROM meal;";
             $res = $dbc->query($sql);
+            if ($res == false) return;
             $this->mealList = $res->fetchAll();
         }
 
