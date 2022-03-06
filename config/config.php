@@ -1,10 +1,11 @@
 <?php
 
 function config() { 
+    $pagename = "MealManager";
     
     if (isset($_ENV["DB_NAME"])) {
         return array(
-            'pagename'  => "mealmanager",
+            'pagename'  => $pagename,
             'dbHost'    => $_ENV["DB_HOST"],
             'dbUser'    => $_ENV["DB_USER"],
             'dbPw'      => $_ENV["DB_PW"],
@@ -13,7 +14,7 @@ function config() {
         
     } else {
         return array(
-            'pagename'  => "mealmanager",
+            'pagename'  => $pagename,
             'dbHost'    => "localhost",
             'dbUser'    => "user",
             'dbPw'      => "password",
