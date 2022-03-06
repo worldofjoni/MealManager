@@ -17,7 +17,7 @@
                 </div>
                 <div class="card mb-3">
                     <?php
-                        $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN Unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
+                        $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
                         $dbc = DB::connect();
                         $sth = $dbc->prepare($sql);
                         $sth->execute([$meal['M_ID']]);

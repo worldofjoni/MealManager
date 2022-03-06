@@ -27,7 +27,7 @@ class Ingrediet {
 
     public function determineIngredient() {
         if (isset($_GET['i_id']) && $_GET['i_id'] != 0) {
-            $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN Unit u ON mi.U_ID = u.U_ID WHERE mi.I_ID = ? AND mi.M_ID = ?;";
+            $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN unit u ON mi.U_ID = u.U_ID WHERE mi.I_ID = ? AND mi.M_ID = ?;";
             $dbc = DB::connect();
             $sth = $dbc->prepare($sql);
             $sth->execute([$_GET['i_id'], $_GET['m_id']]);
