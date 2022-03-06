@@ -18,8 +18,23 @@
                             <a class="btn btn-primary" href="#" role="button"><i class="fas fa-external-link-alt"></i></a>
                         </div> -->
                 <button type="button" class="btn btn-primary stretched-link float-end hidden-xs" data-bs-toggle="modal" data-bs-target="#mealDetail-<?php echo $meal['M_ID'] ?>"><i class="fas fa-external-link-alt"></i></button>
-                <h6 class="mb-0">Main Ingredients:</h6>
-                <p class="card-text mb-1">Beef, Cheese, Buns</p>
+                <?php
+                    $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) WHERE mi.M_ID = ? AND Main = 1 ORDER BY Ingredient";
+                    $dbc = DB::connect();
+                    $sth = $dbc->prepare($sql);
+                    $sth->execute([$meal['M_ID']]);
+                    $mapper = function ($elem) {return $elem['Ingredient'];};
+                    $reslist = array_map($mapper, $sth->fetchAll());
+                    if (count($reslist) != 0) { ?>
+                        <h6 class="mb-0">Main Ingredients:</h6>
+                        <p class="card-text mb-1">
+                        <?php echo implode(", ", $reslist); ?>
+                        </p>
+                    <?php
+                    } else { ?>
+                        <h6 class="mb-0">&nbsp;</h6>
+                        <p class="card-text mb-1">&nbsp;</p>
+                    <?php } ?>
                 <p class="card-text text-end"><small class="text-muted">Last Served: 0 days ago</small></p>
             </div>
         </div>

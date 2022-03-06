@@ -16,44 +16,24 @@
                     </div>
                 </div>
                 <div class="card mb-3">
-                    <h6 class="card-header">Ingredients <span class="badge bg-secondary rounded-pill float-end">6</span> </h6>
+                    <?php
+                        $sql = "SELECT * FROM (mealingredient mi INNER JOIN ingredient i ON mi.I_ID = i.I_ID) LEFT OUTER JOIN Unit u ON mi.U_ID = u.U_ID WHERE mi.M_ID = ? ORDER BY Main DESC, Ingredient";
+                        $dbc = DB::connect();
+                        $sth = $dbc->prepare($sql);
+                        $sth->execute([$meal['M_ID']]);
+                        $res = $sth->fetchAll() ?>
+                    <h6 class="card-header">Ingredients <span class="badge bg-secondary rounded-pill float-end"><?php echo count($res);?></span> </h6>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">0,5 kg</kbd></div>
-                                <div class="col">Beaf</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">500g</kbd></div>
-                                <div class="col">Chese</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success">10</kbd></div>
-                                <div class="col">Bun</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">2</kbd></div>
-                                <div class="col">Tomato</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">1</kbd></div>
-                                <div class="col">Salat</div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-secondary">3</kbd></div>
-                                <div class="col">Onion</div>
-                            </div>
-                        </li>
+
+                            <?php foreach ($res as $ing) { ?>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-4 col-sm-3 col-lg-2 text-end"><kbd class="bg-success"><?php echo $ing['Amount']." ".$ing["Unit"];?></kbd></div>
+                                    <div class="col"><?php echo $ing['Ingredient'];?></div>
+                                </div>
+                            </li>
+
+                        <?php }?>
 
                     </ul>
                 </div>

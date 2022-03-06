@@ -48,7 +48,7 @@ $mev->determineMeal();
                     <span class="input-group-text" id="portions-addon-2"> Portion(s)</span>
                 </div>
                 <div class="mb-3">
-                    <label for="descriptionArea" class="form-label">Beschreibung</label>
+                    <label for="descriptionArea" class="form-label">Description</label>
                     <textarea class="form-control" id="descriptionArea" rows="3" name="description"><?php echo $mev->getData('Description'); ?></textarea>
                 </div>
                 <div class="mb-3">
